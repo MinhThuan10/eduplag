@@ -21,6 +21,7 @@ require_once($CFG->dirroot . '/mod/assign/submission/eduplag/locallib.php');
 
 **After:**
 ```php
+$columns[] = $index;
 $headers[] = $plugin->get_name();  // (line 500)
 ```
 **Add:**
@@ -77,9 +78,9 @@ eduplag_save_checkbox_values($returnid, $checkplagiarism, $viewstudent);
 ```
 ✅ 3. Update checkbox values
 
-**Before:**
+**After:**
 ```php
-return $result;  // (1588)
+ $DB->delete_records('assign', array('id'=>$this->get_instance()->id));
 ```
 **Add:**
 ```php
@@ -132,7 +133,7 @@ if (!empty($defaultvalues['instance'])) {
 
 **Before:**
 ```php
-return $o;  // (line 634)
+$o .= $this->output->container_end();  // (line 628)
 ```
 **Add:**
 ```php
