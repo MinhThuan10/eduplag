@@ -104,14 +104,15 @@ require_once($CFG->dirroot . '/mod/assign/submission/eduplag/lib_helper.php');
 
 ✅ 2. Add checkbox controls to form
 
-**After:**
+**Before:**
 ```php
-eduplag_add_checkboxes_to_form($mform);  // (line 127)
+$assignment->add_all_plugin_settings($mform) // (line 127)
 ```
 **Add:**
 ```php
 // Eduplag
-$assignment->add_all_plugin_settings($mform);
+;
+eduplag_add_checkboxes_to_form($mform);
 ```
 ✅ 3. Prepopulate checkbox values
 **After:**
