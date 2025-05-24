@@ -30,7 +30,7 @@ class eduplag {
         ];
         print_r($_POST);
         
-        $ch = curl_init('http://localhost:5000/mod/api/add_user');
+        $ch = curl_init('http://172.30.24.172/mod/api/add_user');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -67,7 +67,7 @@ class eduplag {
             'school_key' => $schoolkey
         ]);
         
-        $ch = curl_init('http://localhost:5000/mod/api/update_user');
+        $ch = curl_init('http://172.30.24.172/mod/api/update_user');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // dùng PUT
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -102,7 +102,7 @@ class eduplag {
             'school_key'  => $schoolkey
         ]);
 
-        $ch = curl_init('http://localhost:5000/mod/api/delete_user');
+        $ch = curl_init('http://172.30.24.172/mod/api/delete_user');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
@@ -147,7 +147,7 @@ class eduplag {
         ];
         print_r($_POST);
         
-        $ch = curl_init('http://localhost:5000/mod/api/create_class');
+        $ch = curl_init('http://172.30.24.172/mod/api/create_class');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -184,7 +184,7 @@ class eduplag {
             'school_key' => $schoolkey
         ];
         
-        $ch = curl_init('http://localhost:5000/mod/api/update_class');
+        $ch = curl_init('http://172.30.24.172/mod/api/update_class');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // dùng PUT
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -211,7 +211,7 @@ class eduplag {
             'school_key'  => $schoolkey
         ]);
 
-        $ch = curl_init('http://localhost:5000/mod/api/delete_class');
+        $ch = curl_init('http://172.30.24.172/mod/api/delete_class');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
@@ -256,7 +256,7 @@ class eduplag {
         ];
         print_r($_POST);
         
-        $ch = curl_init('http://localhost:5000/mod/api/create_assignment');
+        $ch = curl_init('http://172.30.24.172/mod/api/create_assignment');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -301,7 +301,7 @@ class eduplag {
             'dueDay' => date('m/d/Y', $assignment->duedate)
         ];
         
-        $ch = curl_init('http://localhost:5000/mod/api/update_assignment');
+        $ch = curl_init('http://172.30.24.172/mod/api/update_assignment');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // dùng PUT
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -353,7 +353,7 @@ class eduplag {
             'school_key'  => $schoolkey
         ]);
 
-        $ch = curl_init('http://localhost:5000/mod/api/delete_assignment');
+        $ch = curl_init('http://172.30.24.172/mod/api/delete_assignment');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
@@ -391,12 +391,14 @@ class eduplag {
             'school_name' => $fullname,
             'school_key'  => $schoolkey,
             'email'       => $user->email,
+            'firstname'   => $user->firstname,
+            'lastname'    => $user->lastname,
             'role'        => self::convert_role_shortname($role->shortname), // sẽ convert thành Teacher / Student
             'class_id'    => $courseid,
         ];
     
 
-        $ch = curl_init('http://localhost:5000/mod/api/add_user_to_class');
+        $ch = curl_init('http://172.30.24.172/mod/api/add_user_to_class');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -439,7 +441,7 @@ class eduplag {
             'class_id'    => $courseid,
         ];
 
-        $ch = curl_init('http://localhost:5000/mod/api/detele_user_from_class');
+        $ch = curl_init('http://172.30.24.172/mod/api/detele_user_from_class');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -511,7 +513,7 @@ class eduplag {
                 ];
 
 
-                $ch = curl_init('http://localhost:5000/api/check_plagiarism_moodle');
+                $ch = curl_init('http://172.30.24.172/api/check_plagiarism_moodle');
                 curl_setopt($ch, CURLOPT_POST, true);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

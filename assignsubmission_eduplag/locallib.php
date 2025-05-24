@@ -37,7 +37,7 @@ class assign_submission_eduplag extends assign_submission_plugin {
             'assignment_id'    => $this->assignment->get_instance()->id,
         ]);
 
-        $ch = curl_init('http://localhost:5000/mod/api/delete_file');
+        $ch = curl_init('http://172.30.24.172/mod/api/delete_file');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
